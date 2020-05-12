@@ -16,38 +16,34 @@ app.use(function (req, res, next) {
 app.use(cookieParser());
 app.get('/', (req, res) => res.send('API is working correctly!'))
 
+// Create a new url to access the image with the image file name appended at the end
 function formatPublicURL(key){
   return `https://prutkowskigallery.blob.core.windows.net/gallery/${key}`
-}
-
-async function getBlobName() {
-  const blobSasUrl = `https://${process.env.AZURE_SPACE}.blob.core.windows.net/?${process.env.AZURE_TOKEN}`
-  // Connect to a new BlobServiceClient
-  const blobServiceClient = new BlobServiceClient(blobSasUrl);
-  // Get a container client from the BlobServiceClient
-  const containerClient = blobServiceClient.getContainerClient(process.env.AZURE_CONTAINER);
-  const response = []
-
-  for await (const blob of containerClient.listBlobsFlat()) {
-    response.push(blob.name)
-  };
-  console.log(response)
-  return response;
 }
 
 
 app.get('/blobs', async (req, res) => {
   const response = []
+  let urls = []
     const blobSasUrl = `https://${process.env.AZURE_SPACE}.blob.core.windows.net/?${process.env.AZURE_TOKEN}`
     // Connect to a new BlobServiceClient
     const blobServiceClient = new BlobServiceClient(blobSasUrl);
     // Get a container client from the BlobServiceClient
     const containerClient = blobServiceClient.getContainerClient(process.env.AZURE_CONTAINER);
   
+    // Grab all file names from the container and append to "urls"
     for await (const blob of containerClient.listBlobsFlat()) {
-      response.push({URL: formatPublicURL(blob.name)})
-      
+      urls.push(blob.name)
     };
+    // Sort the files into lowRes and highRes links
+    urls = urls.filter(photo => photo.includes('-compressed'))
+      urls.forEach(name  => {
+        photo = {
+          lowRes: formatPublicURL(name),
+          highRes: formatPublicURL(name).replace('-compressed', '')
+        }
+      response.push(photo)
+      })
     res.status(200).send(response)
 })
 
