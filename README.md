@@ -1,4 +1,4 @@
-# :back::end: Back end for prutkowski.tech
+# Back end for prutkowski.tech
 
 This repository hold the very tiny API I have written with NodeJS and ExpressJS to assist my personal website's gallery. It generates the URLs to access each image (_as the URL structure is the same for every image, I only have to append the file name to the end of the URL_) as well as returns URLs for both the full resolution, and the compressed version of each image thru an HTTP GET request.
 
