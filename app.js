@@ -1,15 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const cookieParser = require('cookie-parser')
 const app = express();
 const port =  process.env.PORT || 3001
-const path = require("path");
 const gallery = require('./routes/gallery')
 
 // Set the view engine to ejs for index page rendering
 app.set('view engine', 'ejs');
-
-app.use(cookieParser());
 
 // CORS (Cross-Origin Resource Sharing) config, preventing violations in the future
 app.use(function (req, res, next) {
@@ -26,9 +22,6 @@ app.use('/gallery', gallery)
 app.get('/', (req, res) => {
   res.render('pages/index');
 })
-
-
-
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
