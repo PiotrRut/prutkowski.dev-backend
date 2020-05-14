@@ -22,7 +22,7 @@ function genImageUrl(key){
 }
 
 // Endpoint responsible for returning full-res and low-res URL for each picture (blob)
-app.get('/blobs', async (req, res) => {
+app.get('/getAllImages', async (req, res) => {
   const response = []
   let urls = []
     const blobSasUrl = `https://${process.env.AZURE_SPACE}.blob.core.windows.net/?${process.env.AZURE_TOKEN}`
