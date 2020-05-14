@@ -3,7 +3,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser')
 const app = express();
 const port =  process.env.PORT || 3001
+const path = require("path");
 const { BlobServiceClient, StorageSharedKeyCredential } = require("@azure/storage-blob");
+
+// Set the view engine to ejs for index page rendering
+app.set('view engine', 'ejs');
 
 // CORS (Cross-Origin Resource Sharing) config, preventing violations in the future
 app.use(function (req, res, next) {
@@ -14,7 +18,10 @@ app.use(function (req, res, next) {
 })
 
 app.use(cookieParser());
-app.get('/', (req, res) => res.send('API is working correctly!'))
+
+app.get('/', (req, res) => {
+  res.render('pages/index');
+})
 
 // Create a new url to access the image with the image file name appended at the end
 function genImageUrl(key){
@@ -38,11 +45,11 @@ app.get('/getAllImages', async (req, res) => {
     // Sort the files into low-res and high-res links
     urls = urls.filter(photo => photo.includes('-compressed'))
       urls.forEach(name  => {
-        photo = {
+        image = {
           lowRes: genImageUrl(name),
           highRes: genImageUrl(name).replace('-compressed', '')
         }
-      response.push(photo)
+      response.push(image)
       })
     res.status(200).send(response)
 })

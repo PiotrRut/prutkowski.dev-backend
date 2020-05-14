@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.jumbotron-doc {
+  border:10px solid #003366;
+  width: 300px;
+  margin: 0 auto
+}
