@@ -17,11 +17,11 @@ app.use(cookieParser());
 app.get('/', (req, res) => res.send('API is working correctly!'))
 
 // Create a new url to access the image with the image file name appended at the end
-function formatPublicURL(key){
+function genImageUrl(key){
   return `https://prutkowskigallery.blob.core.windows.net/gallery/${key}`
 }
 
-
+// Endpoint responsible for returning full-res and low-res URL for each picture (blob)
 app.get('/blobs', async (req, res) => {
   const response = []
   let urls = []
@@ -35,12 +35,12 @@ app.get('/blobs', async (req, res) => {
     for await (const blob of containerClient.listBlobsFlat()) {
       urls.push(blob.name)
     };
-    // Sort the files into lowRes and highRes links
+    // Sort the files into low-res and high-res links
     urls = urls.filter(photo => photo.includes('-compressed'))
       urls.forEach(name  => {
         photo = {
-          lowRes: formatPublicURL(name),
-          highRes: formatPublicURL(name).replace('-compressed', '')
+          lowRes: genImageUrl(name),
+          highRes: genImageUrl(name).replace('-compressed', '')
         }
       response.push(photo)
       })
