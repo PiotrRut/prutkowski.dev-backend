@@ -6,6 +6,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
@@ -23,18 +24,43 @@
 	<main>
 		<div class>
 			<div class="jumbotron">
-			
 				<div class="container">
+
+					<!-- Main bit with header -->
 					<h1>Backend for prutkowski.tech</h1>
 					<p>This is the root endpoint! See below for deployment status and other endpoints!</p>
-          <a href="https://redesign.prutkowski.tech">prutkowski.tech</a> - <img src="https://api.netlify.com/api/v1/badges/3c332460-92fb-4831-b621-87b5bd677ddf/deploy-status"/>
-          <p>____________________________________</p>
-          <br/>
-          <h3><code>/gallery/getAllPhotos</code></h3>
+					<a href="https://redesign.prutkowski.tech">prutkowski.tech</a> - <img src="https://api.netlify.com/api/v1/badges/3c332460-92fb-4831-b621-87b5bd677ddf/deploy-status"/>
+					<p>____________________________________</p>
+
+					<!-- 'Run In Postman' button -->
+					<div class="postman-run-button"
+						data-postman-action="collection/import"
+						data-postman-var-1="fa539fa2f5f2095edcbe">
+					</div>
+					<script type="text/javascript">
+						(function (p,o,s,t,m,a,n) {
+							!p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+							!o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+							(n = o.createElement("script")),
+							(n.id = s+t), (n.async = 1), (n.src = m), n
+							));
+						}(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+          </script>
+          
+					<!-- Endpoints -->
+					<h3><code>/gallery/getAllPhotos</code></h3>
 					<p>
 					  Retrieve all images from MS Azure container, and return <code>fullRes</code> and <code>lowRes</code> URLs.
 					</p>
+
 				</div>		
+			</div>
+
+			<!-- Buttons and links -->
+			<div class="text-center">
+				<a href="https://github.com/PiotrRut" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+					<h5><span class="fa fa-github"></span> Visit my GitHub</h5>
+				</a>							
 			</div>
 	</main>
 
