@@ -4,6 +4,6 @@ This repository holds the very tiny API I have written with NodeJS and ExpressJS
 
 The gallery on [prutkowski.tech](https://prutkowski.tech) uses images stored on a Microsoft Azure blob container. I needed a way to seemlessly retrieve this data from the container and display it on the website.
 
-The container holds two versions of each picture - full resolution one, and one which is compressed down. They compressed picture is the one users can (pre)view on my website, where they also get an option to access the full resolution one.
+The container holds two versions of each picture - full resolution one, and one which is compressed down. They compressed picture is the one users can (pre)view on my website, where they also get an option to access the full resolution one. This is to reduce network load.
 
-
+It all is hosted on a Heroku dyno, and accessible [here](https://prutkowski-backend.herokuapp.com)!
