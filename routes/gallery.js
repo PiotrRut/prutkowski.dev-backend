@@ -16,7 +16,7 @@ const containerClient = blobServiceClient.getContainerClient(process.env.AZURE_C
 
 // Create a new url to access the image with the image file name appended at the end
 function genImageUrl(key){
-  return `https://prutkowskigallery.blob.core.windows.net/gallery/${key}`
+  return `https://${process.env.AZURE_SPACE}.blob.core.windows.net/${process.env.AZURE_CONTAINER}/${key}`
 }
   
 // Endpoint responsible for returning full-res and low-res URL for each picture (blob)
