@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-	<meta charset="UTF-8">
-	<title>Piotr Rutkowski - API</title>
+	<head>  
+		<meta charset="UTF-8">
+		<title>Piotr Rutkowski - API</title>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-	<style>
-		body 	{ padding-top:30px; }
-		.jumbotron p { 
-      font-size: 2rem;
-    }
-	</style>
+		<style>
+			body 	{ padding-top:30px; }
+			.jumbotron p { 
+		font-size: 2rem;
+		}
+		</style>
 
-</head>
+	</head>
 
 <body class="container">
 	<main>
@@ -26,9 +26,8 @@
 				<div class="container">
 
 					<!-- Main bit with header -->
-					<h1>Backend for prutkowski.tech</h1>
-					<p>This is the root endpoint! See below for deployment status and other endpoints!</p>
-					<a href="https://prutkowski.tech">prutkowski.tech</a> - <img src="https://api.netlify.com/api/v1/badges/3c332460-92fb-4831-b621-87b5bd677ddf/deploy-status"/>
+					<h1>Backend for <a href="https://prutkowski.tech" target="_blank" rel="noopener noreferrer">prutkowski.tech</a></h1>
+					<p>This is the root endpoint! See below for other endpoints!</p>
 					<p>____________________________________</p>
 
 					<!-- 'Run In Postman' button -->
@@ -47,11 +46,18 @@
           			</script>
           
 					<!-- Endpoints -->
-					<a href="https://prutkowski-backend.herokuapp.com/gallery/getAllPhotos" target="_blank" rel="noopener noreferrer">
-						<h3><code>/gallery/getAllPhotos</code></h3>
-					</a>
+					 
+					
+					<h3>
+						<code>GET</code>	
+						<code>
+							<a href="https://prutkowski-backend.herokuapp.com/gallery/getAllPhotos" target="_blank" rel="noopener noreferrer" >
+								/gallery/getAllPhotos
+							</a>
+						</code>
+					</h3>
 					<h6>
-					Follow the link to see example response.
+					Follow the above link to see example response.
 					</h6>
 					<p>
 					  Retrieve all images from MS Azure container, and return <code>fullRes</code> and <code>lowRes</code> URLs.
