@@ -23,12 +23,17 @@ function genImageUrl(key) {
 
 // Endpoint responsible for returning full-res and low-res URL for each picture (blob)
 router.get("/getAllPhotos", async (req, res) => {
-  const response = [];
+  const response = { images: [], info: [] };
   let urls = [];
+
   // Grab all file names from the container and append to "urls"
   for await (const blob of containerClient.listBlobsFlat()) {
     urls.push(blob.name);
   }
+  // When was the container last updated?
+  let lastUpdated = await (
+    await containerClient.getProperties()
+  )._response.headers.get("last-modified");
 
   // Sort the files into low-res and high-res links
   urls = urls.filter((photo) => photo.includes("-compressed"));
@@ -37,8 +42,9 @@ router.get("/getAllPhotos", async (req, res) => {
       lowRes: genImageUrl(name),
       highRes: genImageUrl(name).replace("-compressed", ""),
     };
-    response.push(image);
+    response.images.push(image);
   });
+  response.info.push({ lastUpdated: new Date(lastUpdated) });
   res.status(200).send(response);
 });
 
