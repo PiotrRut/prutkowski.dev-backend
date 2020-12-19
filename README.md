@@ -1,6 +1,8 @@
 # Back end for prutkowski.tech
 
-This repository holds the very tiny REST API I have written with NodeJS and ExpressJS to assist my personal website's gallery. It generates the URLs to access each image (_as the URL structure is the same for every image, I only have to append the file name to the end of the URL_) as well as returns URLs for both the full- and low-resolution version of each image through an HTTP GET request. The `/getAllPhotos` endpoint also returns in `info` array, currently returning the date my container was last updated.
+This repository holds the very tiny REST API I have written with NodeJS and ExpressJS to assist my personal website's gallery. It generates the URLs to access each image (_as the URL structure is the same for every image, I only have to append the file name to the end of the URL_) as well as returns URLs for both the full- and low-resolution version of each image through an HTTP GET request. 
+
+The `/getAllPhotos` endpoint also returns an `info` array, currently returning the date my container was last updated.
 
 The gallery on [prutkowski.tech](https://prutkowski.tech) uses images stored on a Microsoft Azure blob container. I needed a way to seemlessly retrieve this data from the container and display it on the website.
 
