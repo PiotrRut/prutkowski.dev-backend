@@ -22,30 +22,35 @@ function genImageUrl(key) {
 }
 
 // Endpoint responsible for returning full-res and low-res URL for each picture (blob)
-router.get("/getAllPhotos", async (req, res) => {
-  const response = { images: [], info: [] };
-  let urls = [];
+router.get("/getAllPhotos", async (_req, res) => {
+  try {
+    const response = { images: [], info: [] };
+    let urls = [];
 
-  // Grab all file names from the container and append to "urls"
-  for await (const blob of containerClient.listBlobsFlat()) {
-    urls.push(blob.name);
+    // Grab all file names from the container and append to "urls"
+    for await (const blob of containerClient.listBlobsFlat()) {
+      urls.push(blob.name);
+    }
+    // When was the container last updated?
+    let lastUpdated = await (
+      await containerClient.getProperties()
+    )._response.headers.get("last-modified");
+
+    // Sort the files into low-res and high-res links
+    urls = urls.filter((photo) => photo.includes("-compressed"));
+    urls.forEach((name) => {
+      image = {
+        lowRes: genImageUrl(name),
+        highRes: genImageUrl(name).replace("-compressed", ""),
+      };
+      response.images.push(image);
+    });
+    response.info.push({ lastUpdated: new Date(lastUpdated) });
+    res.status(200).send(response);
+  } catch (err) {
+    // Why not
+    res.status(418).send(err);
   }
-  // When was the container last updated?
-  let lastUpdated = await (
-    await containerClient.getProperties()
-  )._response.headers.get("last-modified");
-
-  // Sort the files into low-res and high-res links
-  urls = urls.filter((photo) => photo.includes("-compressed"));
-  urls.forEach((name) => {
-    image = {
-      lowRes: genImageUrl(name),
-      highRes: genImageUrl(name).replace("-compressed", ""),
-    };
-    response.images.push(image);
-  });
-  response.info.push({ lastUpdated: new Date(lastUpdated) });
-  res.status(200).send(response);
 });
 
 module.exports = router;

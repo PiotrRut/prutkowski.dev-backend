@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>  
-		<meta charset="UTF-8">
-		<title>Piotr Rutkowski - API</title>
 
-		<!-- CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>Piotr Rutkowski - API</title>
 
-		<style>
-			body 	{ padding-top:30px; }
-			.jumbotron p { 
-		font-size: 2rem;
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<style>
+		body {
+			padding-top: 30px;
 		}
-		</style>
 
-	</head>
+		.jumbotron p {
+			font-size: 2rem;
+		}
+	</style>
+
+</head>
 
 <body class="container">
 	<main>
@@ -26,30 +30,30 @@
 				<div class="container">
 
 					<!-- Main bit with header -->
-					<h1>Backend for <a href="https://prutkowski.tech" target="_blank" rel="noopener noreferrer">prutkowski.tech</a></h1>
+					<h1>Backend for <a href="https://prutkowski.tech" target="_blank"
+							rel="noopener noreferrer">prutkowski.tech</a></h1>
 					<p>This is the root endpoint! See below for other endpoints!</p>
 					<p>____________________________________</p>
 
 					<!-- 'Run In Postman' button -->
-					<div class="postman-run-button"
-						data-postman-action="collection/import"
+					<div class="postman-run-button" data-postman-action="collection/import"
 						data-postman-var-1="fa539fa2f5f2095edcbe">
 					</div>
 					<script type="text/javascript">
-						(function (p,o,s,t,m,a,n) {
+						(function (p, o, s, t, m, a, n) {
 							!p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-							!o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-							(n = o.createElement("script")),
-							(n.id = s+t), (n.async = 1), (n.src = m), n
+							!o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
+								(n = o.createElement("script")),
+								(n.id = s + t), (n.async = 1), (n.src = m), n
 							));
 						}(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-          			</script>
-          
+					</script>
+
 					<!-- Endpoints -->
-					 
-					
+
+
 					<h3>
-						<code>GET</code>	
+						<code>GET</code>
 						<code>
 							<a href="https://prutkowski-backend.herokuapp.com/gallery/getAllPhotos" target="_blank" rel="noopener noreferrer" >
 								/gallery/getAllPhotos
@@ -57,14 +61,15 @@
 						</code>
 					</h3>
 					<h6>
-					Follow the above link to see example response.
+						Follow the above link to see example response.
 					</h6>
 					<p>
-					  Retrieve all images from MS Azure container, and return <code>fullRes</code> and <code>lowRes</code> URLs. <br/>
-					  Also returns <code>info</code> array with container metadata.
+						Retrieve all images from MS Azure container, and return <code>fullRes</code> and
+						<code>lowRes</code> URLs. <br />
+						Also returns <code>info</code> array with container metadata.
 					</p>
 
-				</div>		
+				</div>
 			</div>
 
 			<!-- Buttons and links -->
@@ -72,11 +77,17 @@
 				<a href="https://github.com/PiotrRut" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
 					<h5><span class="fa fa-github"></span> Visit my GitHub</h5>
 				</a>
-				<a href="https://github.com/PiotrRut/prutkowski.tech-backend" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+				<a href="https://github.com/PiotrRut/prutkowski.tech-backend" class="btn btn-primary" target="_blank"
+					rel="noopener noreferrer">
 					<h5><span class="fa fa-github"></span> Project Repository</h5>
-				</a>							
+				</a>
+				<a href="https://prutkowski.tech" class="btn btn-primary" target="_blank"
+					rel="noopener noreferrer">
+					<h5><span class="fa fa-globe"></span> Visit my website!</h5>
+				</a>
 			</div>
-			
+
 	</main>
 </body>
+
 </html>
