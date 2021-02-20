@@ -32,7 +32,7 @@
 					<!-- Main bit with header -->
 					<h1>Backend for <a href="https://prutkowski.tech" target="_blank"
 							rel="noopener noreferrer">prutkowski.tech</a></h1>
-					<p>This is the root endpoint! See below for other endpoints!</p>
+					<p>See below for a list of endpoints!</p>
 					<p>____________________________________</p>
 
 					<!-- 'Run In Postman' button -->
@@ -51,23 +51,41 @@
 
 					<!-- Endpoints -->
 
-
-					<h3>
-						<code>GET</code>
-						<code>
-							<a href="https://prutkowski-backend.herokuapp.com/gallery/getAllPhotos" target="_blank" rel="noopener noreferrer" >
-								/gallery/getAllPhotos
-							</a>
-						</code>
-					</h3>
-					<h6>
-						Follow the above link to see example response.
-					</h6>
-					<p>
-						Retrieve all images from MS Azure container, and return <code>fullRes</code> and
-						<code>lowRes</code> URLs. <br />
-						Also returns <code>info</code> array with container metadata.
-					</p>
+					<div>
+						<h3>
+							<code>GET</code>
+							<code>
+								<a href="https://prutkowski-backend.herokuapp.com/gallery/getAllPhotos" target="_blank" rel="noopener noreferrer" >
+									/gallery/getAllPhotos
+								</a>
+							</code>
+						</h3>
+						<h6>
+							Follow the above link to see example response.
+						</h6>
+						<p>
+							Retrieve all images from MS Azure container, and return <code>fullRes</code> and
+							<code>lowRes</code> URLs. <br />
+							Also returns <code>info</code> array with container metadata.
+						</p>
+					</div>
+					<div>
+						<h3>
+							<code>GET</code>
+							<code>
+								<a href="https://prutkowski-backend.herokuapp.com/platforms/github/repos" target="_blank" rel="noopener noreferrer" >
+									/platforms/github/repos
+								</a>
+							</code>
+						</h3>
+						<h6>
+							Follow the above link to see example response.
+						</h6>
+						<p>
+							Retrieve a list of all my public repositories stored in a MongoDB collection. <br />
+							Updated every 15 minutes.
+						</p>
+					</div>
 
 				</div>
 			</div>
