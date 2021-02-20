@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Schema for the blank model
+// Schema for the repository document
 const Repo = new Schema({
   name: String,
   description: String,
