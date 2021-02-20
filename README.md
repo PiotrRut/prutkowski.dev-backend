@@ -1,11 +1,5 @@
 # Back end for prutkowski.tech
 
-This repository holds the very tiny REST API I have written with NodeJS and ExpressJS to assist my personal website's gallery. It generates the URLs to access each image (_as the URL structure is the same for every image, I only have to append the file name to the end of the URL_) as well as returns URLs for both the full- and low-resolution version of each image through an HTTP GET request. 
+This repository holds the very tiny REST API I have written with NodeJS and ExpressJS to assist my personal website's functioning. For now it has two main tasks: **returning low- and high-res versions of pictures stored in my Azure container** which later passed on to my personal website and displayed in the gallery tab, as well as **return a list of my public GitHub repositories** to display on my website.
 
-The `/getAllPhotos` endpoint also returns an `info` array, currently returning the date my container was last updated.
-
-The gallery on [prutkowski.tech](https://prutkowski.tech) uses images stored on a Microsoft Azure blob container. I needed a way to seemlessly retrieve this data from the container and display it on the website.
-
-The container holds two versions of each picture - full resolution one, and one which is compressed down. They compressed picture is the one users can (pre)view on my website, where they also get an option to access the full resolution one. This is to reduce network load.
-
-It all is hosted on a Heroku dyno, and available [here](https://prutkowski-backend.herokuapp.com)!
+The reason for handling all GitHub traffic here is because by doing so I can send authenticated requests to the GitHub API, thus avoiding the rate limit on requests. I have also integrated this with a MongoDB cluster, which stores all my public repositories with only the fields I need on my website, and will automatically update the database every 15 minutes if it detects any changes (again this is to save network traffic and limit incoming requests to the DB cluster).
