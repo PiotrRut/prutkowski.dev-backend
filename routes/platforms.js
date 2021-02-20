@@ -5,7 +5,9 @@ const axios = require("axios");
 const Repo = require("../schemas/Repo");
 const schedule = require("node-schedule");
 
-// Fetch repos from GitHub and write them to a MongoDB collection
+/**
+ * Fetch repos from GitHub and write them to a MongoDB collection
+ */
 const getReposAndWrite = async () => {
   await axios
     .get("https://api.github.com/users/PiotrRut/repos?sort=created", {
@@ -41,9 +43,7 @@ schedule.scheduleJob("*/15 * * * *", () => {
 });
 
 /**
- * Wrapper endpoint for the GitHub API to be used on my website
- * in order to go around the rate limit
- * (as this request is authenticated)
+ * Read and return repos from the MongoDB collection
  */
 router.get("/github/repos", async (_req, res) => {
   try {
