@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const gallery = require("./routes/gallery");
+const platforms = require("./routes/platforms");
 
 // Set the view engine to ejs for index page rendering
 app.set("view engine", "ejs");
@@ -20,6 +21,7 @@ app.use(function (req, res, next) {
 
 // Import the gallery routes
 app.use("/gallery", gallery);
+app.use("/platforms", platforms);
 
 // Render index.ejs on root endpoint (/)
 app.get("/", (req, res) => {
