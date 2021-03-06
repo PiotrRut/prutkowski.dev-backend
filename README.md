@@ -1,6 +1,6 @@
-# Backend REST API for prutkowski.tech
+# Backend REST API for prutkowski.dev
 
-This repository holds the REST API I have written with NodeJS and ExpressJS to assist my [personal website's](https://prutkowski.tech) functioning. For now it has two main tasks:
+This repository holds the REST API I have written with NodeJS and ExpressJS to assist my [personal website's](https://prutkowski.dev) functioning. For now it has two main tasks:
 
 - **Returning low- and high-res versions of pictures stored in my Azure container** which are then passed on to my personal website's gallery page
 - **Returning a list of my public GitHub repositories** to display on my website
