@@ -10,6 +10,7 @@ const Repo = new Schema({
   stars: Number,
   forks: Number,
   created: Date,
+  gitId: String,
 });
 
 module.exports = mongoose.model("Repo", Repo);

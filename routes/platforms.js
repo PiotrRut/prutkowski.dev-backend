@@ -20,7 +20,7 @@ const getReposAndWrite = async () => {
       for (let repo in res) {
         Repo.findOneAndUpdate(
           {
-            name: res[repo].name,
+            gitId: res[repo].id,
           },
           {
             name: res[repo].name,
@@ -30,6 +30,7 @@ const getReposAndWrite = async () => {
             stars: res[repo].stargazers_count,
             forks: res[repo].forks,
             created: res[repo].created_at,
+            gitId: res[repo].id,
           },
           { upsert: true }
         ).exec();
@@ -37,10 +38,14 @@ const getReposAndWrite = async () => {
     });
 };
 
-// Run the function every 15 mins (4 times an hour)
-schedule.scheduleJob("*/15 * * * *", () => {
+if (process.env.NODE_ENV === "production") {
+  // Run the function every 15 mins (4 times an hour)
+  schedule.scheduleJob("*/15 * * * *", () => {
+    getReposAndWrite();
+  });
+} else {
   getReposAndWrite();
-});
+}
 
 /**
  * Read and return repos from the MongoDB collection
