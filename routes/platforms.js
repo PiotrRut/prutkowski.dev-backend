@@ -15,7 +15,7 @@ const getReposAndWrite = async () => {
         Authorization: process.env.GITHUB_API_TOKEN,
       },
     })
-    .then((res) => res.data.filter((r) => r.name !== "PiotrRut"))
+    .then((res) => res.data.filter((r) => r.name !== "PiotrRut" && !r.fork))
     .then((res) => {
       for (let repo in res) {
         Repo.findOneAndUpdate(
