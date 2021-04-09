@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const gallery = require("./routes/gallery");
 const platforms = require("./routes/platforms");
-const mongo = require("./mw/mongo");
+const mongo = require("./middleware/mongo");
 
 // Initialise MongoDB instance
 mongo.mongoInit();

@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 const { BlobServiceClient } = require("@azure/storage-blob");
 
+/* ******************** */
 /* Blob Service Setup */
+/* ******************** */
 
 // SAS Connection string
 const blobSasUrl = `https://${process.env.AZURE_SPACE}.blob.core.windows.net/?${process.env.AZURE_TOKEN}`;
@@ -14,17 +16,25 @@ const containerClient = blobServiceClient.getContainerClient(
   process.env.AZURE_CONTAINER
 );
 
+/* ********** */
 /* Functions */
+/* ********* */
 
-// Create a new url to access the image with the image file name appended at the end
+/**
+ * Create a new url to access the image with the image file name appended at the end
+ */
 function genImageUrl(key) {
   return `https://${process.env.AZURE_SPACE}.blob.core.windows.net/${process.env.AZURE_CONTAINER}/${key}`;
 }
 
+/* ********** */
+/* Routes */
+/* ********* */
+
 // Endpoint responsible for returning full-res and low-res URL for each picture (blob)
 router.get("/getAllPhotos", async (_req, res) => {
   try {
-    const response = { images: [], info: [] };
+    const response = { images: [] };
     let urls = [];
 
     // Grab all file names from the container and append to "urls"
@@ -45,7 +55,6 @@ router.get("/getAllPhotos", async (_req, res) => {
       };
       response.images.push(image);
     });
-    response.info.push({ lastUpdated: new Date(lastUpdated) });
     res.status(200).send(response);
   } catch (err) {
     // Why not
